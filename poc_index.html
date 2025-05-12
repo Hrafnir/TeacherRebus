@@ -1,0 +1,106 @@
+<!-- Version: #1 -->
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoC: Digitalt Rebusløp System</title>
+    <link rel="stylesheet" href="poc_style.css"> <!-- Linker til ny CSS -->
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="rebus">Rebus-demo</button>
+            <button class="tab-button" data-tab="map">Kart</button>
+        </div>
+
+        <div id="rebus-content" class="tab-content visible">
+
+            <div id="intro-page" class="page visible">
+                <h1>Digitalt Rebusløp System (PoC)</h1>
+                <p>Dette er en demonstrasjon av systemets kjernefunksjonalitet. Skriv inn en demogruppe-kode for å starte.</p>
+                <input type="text" id="team-code-input" placeholder="Gruppekode (f.eks. GRUPPEA)">
+                <button id="start-with-team-code-button">Start Demo</button>
+                <div class="feedback" id="team-code-feedback"></div>
+            </div>
+
+            <!-- POST 1 (Global Post 1 for PoC) -->
+            <div id="post-1-page" class="page">
+                <div class="post-unlock-section">
+                    <h2 class="post-title-placeholder">Post 1: Ankomstkode</h2>
+                    <p class="post-intro-placeholder">Velkommen til første demonstrasjonspost. Finn ankomstkoden på stedet for å låse opp oppgaven.</p>
+                    <input type="text" id="post-1-unlock-input" placeholder="Skriv ankomstkode">
+                    <button class="unlock-post-btn" data-post="1">Lås opp</button>
+                    <div class="feedback" id="feedback-unlock-1"></div>
+                </div>
+                <div class="post-task-section" style="display: none;">
+                    <h2 class="post-task-title-placeholder">Oppgave 1: Enkel Gåte</h2>
+                    <p>Hva har nøkler, men kan ikke åpne dører?</p>
+                    <input type="text" id="post-1-task-input" placeholder="Ditt svar">
+                    <button class="check-task-btn" data-post="1">Sjekk Svar</button>
+                    <div class="feedback" id="feedback-task-1"></div>
+                </div>
+                <button class="dev-reset-button">Tilbake til Start</button>
+            </div>
+
+            <!-- POST 2 (Global Post 2 for PoC) -->
+            <div id="post-2-page" class="page">
+                <div class="post-unlock-section">
+                    <h2 class="post-title-placeholder">Post 2: Ankomstkode</h2>
+                    <p class="post-intro-placeholder">Dere har nådd andre demonstrasjonspost. Finn ankomstkoden for å få neste oppgave.</p>
+                    <input type="text" id="post-2-unlock-input" placeholder="Skriv ankomstkode">
+                    <button class="unlock-post-btn" data-post="2">Lås opp</button>
+                    <div class="feedback" id="feedback-unlock-2"></div>
+                </div>
+                <div class="post-task-section" style="display: none;">
+                    <h2 class="post-task-title-placeholder">Oppgave 2: Observasjon</h2>
+                    <p>Hva er det første ordet du ser på informasjonstavlen nærmest denne posten?</p>
+                    <input type="text" id="post-2-task-input" placeholder="Ditt svar">
+                    <button class="check-task-btn" data-post="2">Sjekk Svar</button>
+                    <div class="feedback" id="feedback-task-2"></div>
+                </div>
+                <button class="dev-reset-button">Tilbake til Start</button>
+            </div>
+
+            <div id="finale-page" class="page">
+                <h1>Demonstrasjon Fullført!</h1>
+                <p>Alle poster i denne PoC-en er løst. Systemet kan utvides med flere poster, ulike oppgavetyper og ytterligere funksjonalitet.</p>
+                <p>Målet for denne demoen er nådd. I et reelt løp ville man blitt guidet til et fysisk mål.</p>
+                <button class="dev-reset-button" style="margin-top: 30px;">Start Demo På Nytt</button>
+            </div>
+        </div>
+
+        <div id="map-content" class="tab-content">
+            <h2>Kart over Demo-område</h2>
+            <p>Bruk kartet for å navigere. Neste post eller målet vil bli markert.</p>
+            <div id="dynamic-map-container"></div>
+            <p style="font-size: 0.9em; margin-top: 15px;">(Trykk på 'Rebus-demo'-fanen for å gå tilbake)</p>
+        </div>
+    </div>
+
+    <audio id="background-audio" loop preload="auto">
+        <source src="audio/background_music.mp3" type="audio/mpeg">
+        <source src="audio/background_music.ogg" type="audio/ogg">
+        Nettleseren din støtter ikke audio-elementet.
+    </audio>
+    <div id="music-controls">
+        <button id="play-pause-button" title="Musikk På/Av">▶️</button>
+        <button id="mute-unmute-button" title="Demp Musikk">🔊</button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volum Musikk">
+    </div>
+    <div id="gps-audio-controls">
+        <button id="toggle-gps-audio-button" title="GPS Nærhetslyd På/Av">🛰️ GPS Av</button>
+        <label for="gps-audio-volume-slider">Pip Volum:</label>
+        <input type="range" id="gps-audio-volume-slider" min="0" max="1" step="0.01" value="0.7" title="Volum Pipelyd">
+    </div>
+
+    <script src="poc_script.js"></script> <!-- Linker til ny JS -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5qUjSj9WyUKsZPljvHfp9RHd-dUjMblk&callback=initMap">
+    </script>
+
+</body>
+</html>
+<!-- Version: #1 -->
